@@ -10,6 +10,12 @@ export const getUserById = async (id) => {
   return res.rows[0];
 };
 
+export const getUserByEmail = async (email) => {
+  const res = await query('SELECT * FROM users WHERE email = $1', [email]);
+  return res.rows[0];
+};
+
+
 export const createUser = async (name, lastname, email, password) => {
   const res = await query(
     'INSERT INTO users(name, lastname, email, password) VALUES($1, $2, $3, $4) RETURNING *',
