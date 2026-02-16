@@ -1,0 +1,48 @@
+/* ── Header ── */
+header {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 2rem 5%;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  font-size: 4vh;
+  letter-spacing: 0.04em;
+  opacity: 0.9;
+  width: 60%;
+}
+
+.progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink-faint);
+  letter-spacing: 0.06em;
+}
+
+.progress-bar {
+  width: 20vw;
+  height: 10px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 2px;
+  overflow: hidden    
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent);
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+main {
+  max-width: 70vw;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}

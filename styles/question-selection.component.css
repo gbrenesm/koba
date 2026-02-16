@@ -1,0 +1,175 @@
+form {
+  margin: 3vh 5vw;
+}
+
+form p {
+  margin: 1%;
+}
+.options {
+  display: flex;
+  justify-content: center;
+  margin: 1%;
+  align-items: center;
+  height: 5vh;
+}
+
+.individual-option {
+  margin: 0% 3%;
+  display: flex;
+}
+
+.instructions {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.8rem 3rem;
+  margin-bottom: 2.5rem;
+  animation: fadeUp 0.5s ease both;
+}
+
+.instructions p {
+  color: var(--ink-muted);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 1.75rem;
+  line-height: 1.25;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--ink);
+}
+
+.question-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem 2rem;
+  margin-bottom: 1rem;
+}
+
+.question-header {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  margin-bottom: 1.4rem;
+}
+
+.question-number {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1.6;
+  min-width: 22px;
+  flex-shrink: 0;
+}
+
+.question-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.individual-option {
+  display: flex;
+  align-items: center;
+}
+
+/* Hide native radio entirely */
+.individual-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* The label becomes the circular button */
+.individual-option label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+}
+
+/* Value label shown above the circle (e.g. "nunca" / "siempre") */
+.individual-option .value {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  white-space: nowrap;
+  margin: 0;
+  transition: color 0.18s;
+}
+
+/* The circle itself — the text node (key) inside label */
+.individual-option label {
+  width: 42px;
+  /* Override below to target only the circle part */
+}
+
+/* We style the label as the button since key is a text node directly inside it */
+.individual-option label {
+  width: auto;
+}
+
+/* Circle button styles using a wrapping technique:
+   We target the label itself as the button area            */
+.individual-option label {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  transition: all 0.18s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.individual-option label:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+  transform: scale(1.1);
+}
+
+/* When the hidden radio is checked, style its adjacent label */
+.individual-option input[type="radio"]:checked + label,
+.individual-option input[type="radio"]:checked ~ label {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 3px 12px var(--accent-glow);
+  transform: scale(1.12);
+}
+
+.value {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  white-space: nowrap;
+  margin: 0;
+  transition: color 0.18s;
+}
+

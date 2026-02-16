@@ -7,7 +7,7 @@ export const getAllTests = async () => {
 
 export const getTestById = async (id) => {
   const res = await query('SELECT * FROM tests WHERE id = $1', [id]);
-  return res.rows[0];
+  return res.rows[0] || null;
 };
 
 export const createTest = async (authors, title, editor, place, year, other_data, license_type, construct, user_id) => {
@@ -15,7 +15,7 @@ export const createTest = async (authors, title, editor, place, year, other_data
     'INSERT INTO tests(authors, title, editor, place, year, other_data, license_type, construct, user_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *',
     [authors, title, editor, place, year, other_data, license_type, construct, user_id]
   );
-  return res.rows[0];
+  return res.rows[0] || null;
 };
 
 export const updateTest = async (id, name, description) => {
@@ -23,10 +23,10 @@ export const updateTest = async (id, name, description) => {
     'UPDATE tests SET name = $1, description = $2 WHERE id = $3 RETURNING *',
     [name, description, id]
   );
-  return res.rows[0];
+  return res.rows[0] || null;
 };
 
 export const deleteTest = async (id) => {
   const res = await query('DELETE FROM tests WHERE id = $1 RETURNING *', [id]);
-  return res.rows[0];
+  return res.rows[0] || null;
 };

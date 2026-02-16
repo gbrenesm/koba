@@ -1,6 +1,14 @@
 :root {
-  --background: #faf5ef;
-  --foreground: #302b2b;
+  --cream: #f5f0e8;
+  --paper: #faf7f2;
+  --ink: #1a1a18;
+  --ink-muted: #6b6760;
+  --ink-faint: #b0ada6;
+  --accent: #2d5a4e;
+  --accent-light: #e6f0ed;
+  --accent-glow: rgba(45, 90, 78, 0.12);
+  --border: #ddd8ce;
+  --radius: 14px;
 }
 
 html,
@@ -10,8 +18,8 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--ink);
+  background: var(--cream);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

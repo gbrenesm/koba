@@ -1,8 +1,12 @@
 services:
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: node:20-alpine
+    working_dir: /app
+    command: sh -c "corepack enable pnpm && pnpm install && pnpm dev"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
     ports:
       - "3000:3000"
     env_file:
@@ -10,7 +14,8 @@ services:
     depends_on:
       - postgres
     environment:
-      - DATABASE_URL=${DATABASE_URL}
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true
   
   postgres:
     image: postgres:16

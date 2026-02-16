@@ -1,4 +1,4 @@
-import { createTest } from '../modules/tests.js';
+import { createTest, getTestById } from '../modules/tests.js';
 
 export const newTest = async (formData) => {
   "use server";
@@ -28,7 +28,7 @@ export const newTest = async (formData) => {
 
 export const getTest = async (id) => {
   try {
-    const test = await getTest(id);
+    const test = await getTestById(id);
     return test;
   } catch (error) {
     console.log(error);
