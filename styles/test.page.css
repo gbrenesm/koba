@@ -1,6 +1,6 @@
 /* ── Header ── */
 header {
-  background: var(--ink);
+  background: var(--accent);
   color: var(--cream);
   padding: 2rem 5%;
   position: sticky;

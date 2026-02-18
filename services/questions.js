@@ -1,14 +1,11 @@
-import { getQuestionsOfTest } from '../modules/questions.js';
-import { getTestById } from '../modules/tests.js';
+import { getQuestionsOfTest  } from "@/querys/constructs";
 
-export const questionsTests = async (test_id) => {
-  "use server";
+export const questionsBySection = async (test_id, section_id) => {
   try {
-    const test = await getTestById(test_id);
-    const questions = await getQuestionsOfTest(test_id);
-    return { test, questions };
+    const questions = await getQuestionsOfTest(test_id, section_id);
+    return { questions };
   } catch (error) {
-    console.error('Error fetching questions:', error);
+    console.error('Error fetching sections of test:', error);
     throw error;
   }
-}
+};

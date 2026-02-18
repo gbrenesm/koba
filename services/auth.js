@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { createUser, getUserByEmail } from "@/modules/users";
+import { createUser, getUserByEmail } from "@/querys/users";
 
 export async function authenticate(email, password) {
   "use server";

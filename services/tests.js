@@ -1,4 +1,4 @@
-import { createTest, getTestById } from '../modules/tests.js';
+import { createTest, getTestById } from '../querys/tests.js';
 
 export const newTest = async (formData) => {
   "use server";

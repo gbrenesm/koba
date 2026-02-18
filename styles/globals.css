@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap');
+
 :root {
   --cream: #f5f0e8;
   --paper: #faf7f2;
   --ink: #1a1a18;
   --ink-muted: #6b6760;
   --ink-faint: #b0ada6;
-  --accent: #2d5a4e;
+  --accent: #32746D;
   --accent-light: #e6f0ed;
   --accent-glow: rgba(45, 90, 78, 0.12);
   --border: #ddd8ce;

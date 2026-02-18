@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { getAllUsers } from "@/modules/users";
+import { getAllUsers } from "@/querys/users";
 
 export default async function Home() {
   const users = await getAllUsers();
