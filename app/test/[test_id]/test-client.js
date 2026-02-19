@@ -1,4 +1,3 @@
-// app/test/[test_id]/TestClient.js (Client Component)
 'use client';
 
 import { useState, useTransition } from 'react';
@@ -11,6 +10,7 @@ export default function TestClient({ test, sections, testId, initialQuestions })
   const [isPending, startTransition] = useTransition();
 
   const changeSection = async (newSectionNumber) => {
+    console.log("Request acá?")
     startTransition(async () => {
       setSectionNumber(newSectionNumber);
       const newQuestions = await getQuestionsBySection(

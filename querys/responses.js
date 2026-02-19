@@ -1,7 +1,38 @@
 import { query } from '../lib/db.js';
 
 export const addNewResponses = async ({ data }) => {
-  const { section, responses_type, responses, count, notes, interpretations, tests_id, client_id } = data;
-  const res = await query('INSERT INTO responses (section, responses_type, responses, count, notes, interpretations, tests_id, client_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [section, responses_type, responses, count, notes, interpretations, tests_id, client_id]);
+  if (!Array.isArray(data) || data.length === 0) {
+    throw new Error('Please provide at least one response');
+  }
+
+  const values = [];
+  const placeholders = data.map((item, index) => {
+    const offset = index * 4;
+    
+    // Asegurar que response sea un array
+    const responseArray = Array.isArray(item.response) 
+      ? item.response 
+      : [item.response];
+    
+    values.push(
+      item.question_id,
+      item.responses_type,
+      item.client_id,
+      responseArray  // PostgreSQL lo convertirá automáticamente
+    );
+    
+    return `($${offset + 1}::uuid, $${offset + 2}::response_type, $${offset + 3}::uuid, $${offset + 4}::text[])`;
+  }).join(', ');
+
+  const queryText = `
+    INSERT INTO responses (question_id, response_type, client_id, response) 
+    VALUES ${placeholders}
+    RETURNING *
+  `;
+
+  console.log('QUERY:', queryText);
+  console.log('VALUES:', values);
+
+  const res = await query(queryText, values);
   return res.rows ?? null;
 };
