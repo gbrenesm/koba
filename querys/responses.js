@@ -1,3 +1,4 @@
+
 import { query } from '../lib/db.js';
 
 export const addNewResponses = async ({ data }) => {
@@ -7,7 +8,7 @@ export const addNewResponses = async ({ data }) => {
 
   const values = [];
   const placeholders = data.map((item, index) => {
-    const offset = index * 4;
+    const offset = index * 5;
     
     // Asegurar que response sea un array
     const responseArray = Array.isArray(item.response) 
@@ -18,14 +19,15 @@ export const addNewResponses = async ({ data }) => {
       item.question_id,
       item.responses_type,
       item.client_id,
-      responseArray  // PostgreSQL lo convertirá automáticamente
+      responseArray,  // PostgreSQL lo convertirá automáticamente
+      item.session_id
     );
     
-    return `($${offset + 1}::uuid, $${offset + 2}::response_type, $${offset + 3}::uuid, $${offset + 4}::text[])`;
+    return `($${offset + 1}::uuid, $${offset + 2}::response_type, $${offset + 3}::uuid, $${offset + 4}::text[], $${offset + 5}::uuid)`;
   }).join(', ');
 
   const queryText = `
-    INSERT INTO responses (question_id, response_type, client_id, response) 
+    INSERT INTO responses (question_id, response_type, client_id, response, session_id) 
     VALUES ${placeholders}
     RETURNING *
   `;
