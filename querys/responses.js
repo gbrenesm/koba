@@ -38,3 +38,12 @@ export const addNewResponses = async ({ data }) => {
   const res = await query(queryText, values);
   return res.rows ?? null;
 };
+
+const getResponses = async() => {
+  const queryText = `
+    SELECT * FROM responses
+  `;
+
+  const res = await query(queryText);
+  return res.rows ?? null;
+};
