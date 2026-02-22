@@ -1,32 +1,41 @@
 'use server';
-import { randomUUID } from 'crypto';
-import { addNewResponses } from '../querys/responses.js';
+import { addNewResponses } from '@/querys/responses.js';
+import { createNewSession } from "@/querys/sessions.js";
+import { createInterpretations } from "@/services/interpretations";
 
-export const createNewResponses = async (formData, client_id, responses_type = 'selection') => {
-  const session_id = randomUUID();
+export const createNewResponsesService = async (formData, section, test_id, client_id, response_type = 'selection') => {
+  client_id = 'eb5b7b55-472e-4ed2-8b13-6091ad55a7ee'
   
+  // 1. Crear la sesión de respuestas
+  const session = await createNewSession(client_id, test_id, section.id);
+  console.log("session_id", session)
+  // TODO: Implementar client_id
   const data = Object.fromEntries(formData);
   
-  console.log("Session:", session_id);
   const responsesArray = Object.entries(data).map(([key, value]) => ({
+    client_id,
     question_id: key,
-    responses_type,
-    // TODO: Implementar client_id
-    client_id: 'c095cf60-545b-4ef9-bd92-69a988dc465c',
     response: [value],
-    session_id
+    session_id: session.id
   }));
   
-  console.log(`Insertando ${responsesArray.length} respuestas con session_id: ${session_id}`);
+  // 2. Guardar las respuestas en la base de datos, agregando el session_id
+  try {
+    const result = await addNewResponses({ data: responsesArray });
+    console.log(`${result?.length || 0} respuestas insertadas correctamente`);
+  } catch (error) {
+    console.error(error);
+  }
   
-  const result = await addNewResponses({ data: responsesArray });
-  
-  console.log(`${result?.length || 0} respuestas insertadas correctamente`);
+  // 3. Crear una interpretación para las respuestas
+  try {
+    const interpretation = await createInterpretations(client_id, test_id, session.id);
+    console.log("Interpretation:", interpretation);
+  } catch (error) {
+    console.error(error);
+  }
   
   return {
-    success: true,
-    session_id,
-    count: result?.length || 0,
-    data: result
+    success: true
   };
 };

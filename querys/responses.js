@@ -8,7 +8,7 @@ export const addNewResponses = async ({ data }) => {
 
   const values = [];
   const placeholders = data.map((item, index) => {
-    const offset = index * 5;
+    const offset = index * 4;
     
     // Asegurar que response sea un array
     const responseArray = Array.isArray(item.response) 
@@ -16,34 +16,37 @@ export const addNewResponses = async ({ data }) => {
       : [item.response];
     
     values.push(
-      item.question_id,
-      item.responses_type,
       item.client_id,
-      responseArray,  // PostgreSQL lo convertirá automáticamente
+      item.question_id,
+      responseArray,
       item.session_id
     );
     
-    return `($${offset + 1}::uuid, $${offset + 2}::response_type, $${offset + 3}::uuid, $${offset + 4}::text[], $${offset + 5}::uuid)`;
+    return `($${offset + 1}::uuid, $${offset + 2}::uuid, $${offset + 3}::text[], $${offset + 4}::uuid)`;
   }).join(', ');
 
   const queryText = `
-    INSERT INTO responses (question_id, response_type, client_id, response, session_id) 
+    INSERT INTO responses (client_id, question_id, response, session_id) 
     VALUES ${placeholders}
     RETURNING *
   `;
-
-  console.log('QUERY:', queryText);
-  console.log('VALUES:', values);
 
   const res = await query(queryText, values);
   return res.rows ?? null;
 };
 
-const getResponses = async() => {
+
+export const getResponsesForInterpretation = async (client_id, session_id) => {
   const queryText = `
-    SELECT * FROM responses
+    SELECT r.*, q.construct_id, q.notes
+    FROM responses r
+    INNER JOIN questions q ON q.id = r.question_id
+    WHERE r.session_id = $1
+    AND r.client_id = $2
+    AND r.deleted_at IS NULL
   `;
 
-  const res = await query(queryText);
+  const res = await query(queryText, [session_id, client_id]);
+
   return res.rows ?? null;
 };

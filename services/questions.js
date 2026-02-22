@@ -1,4 +1,4 @@
-import { getQuestionsOfTest  } from "@/querys/constructs";
+import { getQuestionsOfTest  } from "@/querys/questions";
 
 export const questionsBySection = async (test_id, section_id) => {
   try {

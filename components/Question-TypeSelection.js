@@ -1,18 +1,17 @@
 'use client';
 
 import '../styles/question-selection.component.css';
-import { createNewResponses } from '../services/responses.js';
+import { createNewResponsesService } from '../services/responses.js';
 
 
 
-export default function QuestionSelection ({ questions, section }) {
+export default function QuestionSelection ({ questions, section, test_id }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    await createNewResponses(formData, section);
+    await createNewResponsesService(formData, section, test_id);
   };
-  
-  console.log(questions)
+  console.log(section)
   return (
     <form key={section.title} onSubmit={handleSubmit}>
       {questions.map((question, index) => (

@@ -10,7 +10,6 @@ export default function TestClient({ test, sections, testId, initialQuestions })
   const [isPending, startTransition] = useTransition();
 
   const changeSection = async (newSectionNumber) => {
-    console.log("Request acá?")
     startTransition(async () => {
       setSectionNumber(newSectionNumber);
       const newQuestions = await getQuestionsBySection(
@@ -67,6 +66,7 @@ export default function TestClient({ test, sections, testId, initialQuestions })
               key={sectionNumber}
               questions={questions}
               section={sections[sectionNumber]}
+              test_id={testId}
             />
             <div className="navigation-buttons">
               <button 
