@@ -108,7 +108,7 @@
 
 .modal-table__label {
   min-width: 180px;
-  color: var(--ink-muted);git
+  color: var(--ink-muted);
   text-align: right;
   flex-shrink: 0;
 }
