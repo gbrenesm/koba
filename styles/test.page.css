@@ -1,6 +1,6 @@
 /* ── Header ── */
 header {
-  background: var(--accent);
+  background: var(--principal-green);
   color: var(--cream);
   padding: 2rem 5%;
   position: sticky;
@@ -16,6 +16,14 @@ header h1 {
   letter-spacing: 0.04em;
   opacity: 0.9;
   width: 60%;
+}
+
+h2 {
+  font-size: 1.75rem;
+  line-height: 1.25;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--ink);
 }
 
 .progress-wrap {

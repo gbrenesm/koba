@@ -1,3 +1,43 @@
+.progress-wrap {
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-end; gap: 6px;
+  min-width: 160px;
+}
+
+#progress-text {
+  font-size: 0.75rem; 
+  font-weight: 500;
+  letter-spacing: 0.06em; 
+  text-transform: uppercase;
+  color: var(--teal-200);
+}
+
+.progress-bar {
+  width: 160px; height: 4px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 99px; overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--teal-200), #a8e6e0);
+  border-radius: 99px;
+  transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute; right: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 8px; height: 8px;
+  background: #a8e6e0; border-radius: 50%;
+  box-shadow: 0 0 6px rgba(168,230,224,0.7);
+}
+
+
+
 form {
   margin: 3vh 5vw;
 }
@@ -33,13 +73,7 @@ form p {
   font-weight: 300;
 }
 
-h2 {
-  font-size: 1.75rem;
-  line-height: 1.25;
-  font-weight: 600;
-  margin-bottom: 0.4rem;
-  color: var(--ink);
-}
+
 
 .question-card {
   background: var(--paper);

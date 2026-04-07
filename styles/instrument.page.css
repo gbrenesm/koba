@@ -1,0 +1,22 @@
+.instruments-header {
+  margin: 30px 10vw;
+  
+  h1 {
+    font-size: 4em;
+    color: var(--red);
+  }
+  
+  h2 {
+    font-size: 2em;
+    width: 60%;
+    margin-top: 5vh;
+    color: var(--teal-600);
+  }
+}
+
+.instruments-main {
+  margin: 0 10vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}

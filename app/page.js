@@ -34,13 +34,13 @@ export default async function Home() {
               </g>
             </svg>
           </div>
-      <div class="right-panel">
-        <div class="brand">
-          <span class="brand-kobo">Kobo</span>
-          <span class="brand-test">Test</span>
+      <div className="right-panel">
+        <div className="brand">
+          <span className="brand-kobo">Kobo</span>
+          <span className="brand-test">Test</span>
         </div>
-        <p class="subtitle">Evaluación psicosocial</p>
-        <div class="buttons">
+        <p className="subtitle">Evaluación psicosocial</p>
+        <div className="buttons">
           <Link href="/instrumentos" className='btn btn-primary'>Conoce nuestros instrumentos</Link>
           <Link href="/instrumentos/generador" className='btn btn-secondary'>Genera un instrumento nuevo</Link>
         </div>

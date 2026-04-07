@@ -1,0 +1,51 @@
+.instrument-card {
+  display: flex;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  max-width: 320px;
+  margin: 1vw;
+}
+
+.instrument-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.instrument-card-info {
+  flex: 1;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.instrument-card-name {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--cream);
+  margin: 10px 0;
+}
+
+.instrument-card-category {
+  font-size: 1rem;
+  color: var(--cream);
+  margin: 10px 0;
+}
+
+.instrument-card-image {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.instrument-card-image-placeholder {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+}

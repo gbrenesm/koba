@@ -10,7 +10,7 @@ export default async function AnswerTestPage({ params }) {
   // Obtener datos del servidor
   const { test, sections } = await sectionsTest(test_id);
   
-  const { questions } = await questionsBySection(test_id, sections[0].id);
+  const { questions } = await questionsBySection(sections[0].id);
 
   if (!test) notFound();
   
@@ -19,6 +19,6 @@ export default async function AnswerTestPage({ params }) {
     test={test}
     sections={sections}
     testId={test_id}
-    initialQuestions={questions}
+    allQuestions={questions}
   />;
 }

@@ -1,7 +1,7 @@
 import { query } from '../lib/db.js';
 
-export const getAllTests = async () => {
-  const res = await query('SELECT * FROM tests ORDER BY id ASC');
+export const getAllPublicTests = async () => {
+  const res = await query('SELECT * FROM tests WHERE license_type = $1 ORDER BY id ASC', ['public']);
   return res.rows;
 };
 

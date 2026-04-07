@@ -14,7 +14,17 @@
   --blue: #6a8fa0;
   --accent-glow: rgba(45, 90, 78, 0.12);
   --border: #ddd8ce;
-  --radius: 14px;
+  --radius: 10px;
+  --teal-900: #1a3c38;
+  --teal-800: #2a5450;
+  --teal-700: #3a6b66;
+  --teal-600: #4a7c77;
+  --teal-200: #b2d4d1;
+  --teal-100: #d6ebe9;
+  --teal-50:  #eef6f5;
+  --sand-100: #f5f2ec;
+  --sand-200: #ede9e0;
+  --sand-300: #ddd9cf;
   
 }
 

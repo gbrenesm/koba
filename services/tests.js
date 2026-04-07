@@ -1,4 +1,4 @@
-import { createTest, getTestById } from '../querys/tests.js';
+import { createTest, getTestById, getAllPublicTests } from '../querys/tests.js';
 
 export const newTest = async (formData) => {
   "use server";
@@ -34,4 +34,14 @@ export const getTest = async (id) => {
     console.log(error);
     throw new Error('Failed to get test', error.message);
   }
-}
+};
+
+export const getPublicTests = async () => {
+  try {
+    const tests = await getAllPublicTests();
+    return tests;
+  } catch (error) {
+    console.log(error);
+    throw new Error('Faild to get public tests', error.message);
+  }
+};
